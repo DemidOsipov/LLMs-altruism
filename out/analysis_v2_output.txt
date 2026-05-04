@@ -1,0 +1,78 @@
+Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+  Loaded v2: results_v2_deepseek.csv (4743 rows)
+  Loaded v2: results_v2_grok.csv (4743 rows)
+
+=== DeepSeek V3.2 ===
+  Obs: 4743, cells: 1581
+  SD range: [1, 2, 4]...[96, 98, 100]
+  Stake range: $1–$250000
+  Share at SD=1: 0.495
+  Share at SD=100: 0.136
+  Mean over all: 0.322
+  Share at stake=$10: 0.345
+  Share at stake=$250K: 0.281
+
+=== Grok 4.1 Fast ===
+  Obs: 4743, cells: 1581
+  SD range: [1, 2, 4]...[96, 98, 100]
+  Stake range: $1–$250000
+  Share at SD=1: 0.515
+  Share at SD=100: 0.092
+  Mean over all: 0.222
+  Share at stake=$10: 0.249
+  Share at stake=$250K: 0.127
+
+=== OLS regression — DeepSeek V3.2 ===
+  [raw stake ($)] n=1581, R²=0.508
+    intercept              0.4736  t= 109.08  [0.4651, 0.4821]
+    social_distance      -0.00292  t= -39.94  [-0.003063, -0.002776]
+    stake              -2.358e-07  t=  -5.98  [-3.131e-07, -1.585e-07]
+  [log(stake)] n=1581, R²=0.542
+    intercept              0.5125  t=  94.34  [0.5018, 0.5231]
+    social_distance      -0.00292  t= -41.38  [-0.003058, -0.002781]
+    stake               -0.007095  t= -12.43  [-0.008213, -0.005976]
+
+=== OLS regression — Grok 4.1 Fast ===
+  [raw stake ($)] n=1581, R²=0.843
+    intercept              0.5207  t= 138.92  [0.5133, 0.528]
+    social_distance     -0.005725  t= -90.72  [-0.005848, -0.005601]
+    stake               -5.14e-07  t= -15.11  [-5.807e-07, -4.473e-07]
+  [log(stake)] n=1581, R²=0.860
+    intercept              0.5723  t= 124.71  [0.5633, 0.5813]
+    social_distance     -0.005725  t= -96.05  [-0.005841, -0.005608]
+    stake                -0.01019  t= -21.13  [-0.01113, -0.009244]
+
+=== Robustness regression table (OLS, log stake, cell means) ===
+  Condition              Model                   c0      c_SD     c_log   t_SD     R2     N
+  ----------------------------------------------------------------------------------
+  Main (default)         DeepSeek            0.5125  -0.00292  -0.00709 -41.38  0.542  1581
+  Main (default)         Grok                0.5723  -0.00572  -0.01019 -96.05  0.860  1581
+  Low temp (0.3)         DeepSeek            0.5325  -0.00402  -0.00244 -13.21  0.736    66
+  Low temp (0.3)         Grok                0.5808  -0.00429  -0.01155 -18.04  0.849    66
+  High temp (1.5)        DeepSeek            0.4440  -0.00257   0.00143  -7.33  0.461    66
+  High temp (1.5)        Grok                0.5720  -0.00426  -0.00963 -17.03  0.830    66
+  Alt. prompt            DeepSeek            0.4418  -0.00271  -0.01400  -6.06  0.437    66
+  Alt. prompt            Grok                0.6037  -0.00545  -0.01367  -9.33  0.598    66
+
+=== Generosity comparison: LLMs vs. Bechler et al. (2015) ===
+  Method: one-sample t-test of LLM cell means against human benchmark.
+  Stakes averaged: $10–$200 range at given SD.
+  H0: LLM mean == human benchmark; t = (mean_LLM - benchmark) / SE
+
+  SD=20 (human benchmark = 11.5%)
+    DeepSeek: mean=40.5%, n=8 cells, t=14.5, p=0.0000 ***
+    Grok: mean=42.5%, n=8 cells, t=18.4, p=0.0000 ***
+
+  SD=100 (human benchmark = 6.5%)
+    DeepSeek: mean=18.3%, n=8 cells, t=2.9, p=0.0036 **
+    Grok: mean=14.5%, n=8 cells, t=3.0, p=0.0025 **
+
+
+Generating figures...
+Saved /home/demid/Научная работа с Дагаевым/exp/out/fig_sd_effect.png
+Saved /home/demid/Научная работа с Дагаевым/exp/out/fig_stake_effect.png
+Saved /home/demid/Научная работа с Дагаевым/exp/out/fig_heatmaps.png
+Saved /home/demid/Научная работа с Дагаевым/exp/out/fig_robustness.png
+Saved /home/demid/Научная работа с Дагаевым/exp/out/fig_regression_scatter.png
+
+Done.

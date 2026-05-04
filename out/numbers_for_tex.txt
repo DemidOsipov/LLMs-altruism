@@ -1,0 +1,97 @@
+
+======================================================================
+KEY NUMBERS FOR PRESENTATION_V3 AND THESIS UPDATE
+======================================================================
+
+──────────────────────────────────────────────────
+MODEL: DeepSeek V3.2  |  N cells: 1581
+  SD range: [1, 2, 4]...[96, 98, 100]
+  Stake range: $1–$250000
+
+  RAW STAKE spec:
+    c0     = 0.47364  t=109.08
+    c_SD   = -0.00292  t=-39.94  
+    c_raw  = -2.3580e-07  t=-5.98  
+    R2     = 0.508   N = 1581
+
+  LOG STAKE spec:
+    c0     = 0.51248  [0.502, 0.523]  t=94.34
+    c_SD   = -0.00292  [-0.00306, -0.00278]  t=-41.38  
+    c_lm   = -0.00709  [-0.00821, -0.00598]  t=-12.43  
+    R2     = 0.542   N = 1581
+
+  IMPLIED pp DECLINE ($1–$250K log-spec): 8.8 pp
+  Mean share at SD=1: 49.5%
+  Mean share at SD=2: 47.7%
+  Mean share at SD=4: 41.5%
+  Mean share at SD=10: 43.7%
+  Mean share at SD=20: 38.0%
+  Mean share at SD=50: 45.4%
+  Mean share at SD=96: 15.1%
+  Mean share at SD=100: 13.6%
+
+  GENEROSITY TESTS vs HUMANS:
+    SD=20, avg $10-$200: LLM=40.5%  vs human 11.5%  t=14.5  p=0.0000***
+    SD=100, avg $10-$200: LLM=18.3%  vs human 6.5%  t=2.9  p=0.0036**
+
+  ROBUSTNESS REGRESSIONS (log stake):
+    Cond                       c0       c_SD       c_lm      R2     N
+    temp_low               0.5325   -0.00402    -0.00244    0.736    66
+    temp_high              0.4440   -0.00257     0.00143    0.461    66
+    altprompt              0.4418   -0.00271    -0.01400    0.437    66
+
+──────────────────────────────────────────────────
+MODEL: Grok 4.1 Fast  |  N cells: 1581
+  SD range: [1, 2, 4]...[96, 98, 100]
+  Stake range: $1–$250000
+
+  RAW STAKE spec:
+    c0     = 0.52066  t=138.92
+    c_SD   = -0.00572  t=-90.72  
+    c_raw  = -5.1401e-07  t=-15.11  
+    R2     = 0.843   N = 1581
+
+  LOG STAKE spec:
+    c0     = 0.57232  [0.563, 0.581]  t=124.71
+    c_SD   = -0.00572  [-0.00584, -0.00561]  t=-96.05  
+    c_lm   = -0.01019  [-0.01113, -0.00924]  t=-21.13  
+    R2     = 0.860   N = 1581
+
+  IMPLIED pp DECLINE ($1–$250K log-spec): 12.7 pp
+  Mean share at SD=1: 51.5%
+  Mean share at SD=2: 50.2%
+  Mean share at SD=4: 50.7%
+  Mean share at SD=10: 47.3%
+  Mean share at SD=20: 40.2%
+  Mean share at SD=50: 35.8%
+  Mean share at SD=96: 1.3%
+  Mean share at SD=100: 9.2%
+
+  GENEROSITY TESTS vs HUMANS:
+    SD=20, avg $10-$200: LLM=42.5%  vs human 11.5%  t=18.4  p=0.0000***
+    SD=100, avg $10-$200: LLM=14.5%  vs human 6.5%  t=3.0  p=0.0025**
+
+  ROBUSTNESS REGRESSIONS (log stake):
+    Cond                       c0       c_SD       c_lm      R2     N
+    temp_low               0.5808   -0.00429    -0.01155    0.849    66
+    temp_high              0.5720   -0.00426    -0.00963    0.830    66
+    altprompt              0.6037   -0.00545    -0.01367    0.598    66
+
+======================================================================
+UPDATE CHECKLIST:
+  presentation_v3.tex:
+    - SD Key Takeaways: c_SD values for both models
+    - Stake Key Takeaways: c_logm, pp decline values
+    - Are LLMs More Generous: table values
+    - Robustness: all 8 rows
+  thesis.latex:
+    - Abstract: all coefficients
+    - Table 1: all coefficients, CIs, R2, N
+    - Paragraphs H1/H2: t-stats, pp declines, R2
+    - SD gradient section: key cell values
+    - Stake section: pp values
+    - Comparison section: t-test values
+    - Robustness Table 2: all coefficients
+    - Discussion: coefficient references
+    - Conclusion: coefficient references
+======================================================================
